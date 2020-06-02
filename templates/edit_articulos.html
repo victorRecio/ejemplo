@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block %}
+
+<form action="/up_articulo/art.0" method="POST">
+    <input type="text" name="nomb_art" placeholder="Nombre articulo" value="{{art.1}}">
+    <input type="text" name="price_art" placeholder="presio" value="{{art.2}}">
+    <input type="text" name="desc_art" placeholder="Descripcion" value="{{art.3}}">
+    <button type="submit">Save</button>
+
+</form>
+{% endblock %}

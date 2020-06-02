@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block %}
+
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if message %}
+        {% for mesage in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{mesage}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="card card-body">
+            <form action="/add_articulo" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nomb_art" placeholder="Nombre articulo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="price_art" placeholder="presio" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="desc_art" placeholder="Descripcion" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<table>
+    <thead>
+        <tr style="background-color:#00AAE4 ;">
+            <td>Nombre</td>
+            <td>precio</td>
+            <td>Descripcion</td>
+            <td>Operations</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for art in articulos %}
+        <tr>
+            <td> {{art.1}} </td>
+            <td> {{art.2}} </td>
+            <td> {{art.3}} </td>
+            <td>
+                <button class="btn btn-danger"><img src="img/img-borrar.png" width="20" height="20" alt=""></button> 
+                <button style="margin-left: 5px;" class="btn btn-warning"><img src="img/img-editar.png" width="20" height="20" alt=""></button>
+            </td>
+        </tr>
+        {% enffor %}
+    </tbody>
+</table>
+
+{% endblock %}
