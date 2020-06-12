@@ -19,24 +19,26 @@ app.secret_key = 'mysecretkey'
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+    Articulos.index()
+    #def index():
+        #return render_template('index.html')
 
 """A qui Todo con Respecto a la Creacion y manipulacion de articulos"""
-try:
-    app.route('/add_articulo', methods=['POST'])
-    Articulos.add_articulo()
+
+#try:
+    @app.route('/add_articulo', methods=['POST'])
+        Articulos.add_articulo()
     @app.route('/edit_articulo/<id>',methods=['POST'])
-    Articulos.edit_articulo()
+        Articulos.edit_articulo()
     @app.route('/up_articulo/<id>',methods=['POST'])
-    Articulos.up_articulo()
+        Articulos.up_articulo()
     @app.route('/delete_articulo/<string:id>',methods=['POST'])
-    Articulos.delete_articulo()
+        Articulos.delete_articulo()
     @app.route('/find_articulo',methods=['POST'])
-    Articulos.find_articulo()
-except Exception as err:
-    print(err)
-    print("Ooosp! Ocurrio un error")
+        Articulos.find_articulo()
+#except Exception as err:
+    #print(err)
+    #print("Ooosp! Ocurrio un error")
 
 if __name__ == '__main__':
     app.run(port = 3000, debug = True)    
